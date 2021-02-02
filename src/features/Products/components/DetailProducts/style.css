@@ -1,0 +1,77 @@
+.details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px;
+   }
+   .details .img-container{
+       max-width: 400px;
+       width: 100%;
+       margin: 20px;
+       height: 450px;
+       background-position: center;
+       background-size: cover;
+       background-repeat: no-repeat;
+       cursor: zoom-in;
+   }
+   .box-details{
+       max-width: 500px;
+        margin: 20px;
+   }
+   .box-details h2 {
+       text-transform:  uppercase;
+       color: blue;
+       letter-spacing: 2px;
+       font-size: 2rem;
+   }
+   .box-details button,
+   .box-details .cart  {
+       border: 1px solid #555;
+       outline: none;
+       background-color: #333 ;
+       color: #fff;
+       text-align: center;
+       padding: 10px 0;
+       margin: 10px 0;
+       cursor: pointer;
+       text-transform: uppercase;
+       letter-spacing: 2px;
+   } 
+   .colors button {
+       width: 35px;
+       height: 35px;
+   }
+   .sizes button {
+       width: 35px;
+       height: 35px;
+   }
+   .box-details p {
+       line-height: 1.5;
+       margin: 10px 0;
+   }
+   .box-details .thumb{
+       display: flex;
+       cursor: pointer;
+   }
+   .box-details .thumb img {
+       width: 50px;
+       margin: 20px;
+       overflow: hidden;
+   }
+   .box-details .cart {
+        padding: 10px 25px ;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+   }
+   @media (max-width: 500px) {
+       .details{
+           padding: 0;
+       }
+       .box-details .thumb img {
+           width: 40px;
+       }
+        .details .img-container{
+            height: 350px;
+        }
+   }
