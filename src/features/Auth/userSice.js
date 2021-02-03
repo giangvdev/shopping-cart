@@ -11,9 +11,9 @@ import StorageKeys from "../../constants/storage-keys";
      // call api to register
       const data = await userApi.register(payload);
 
-      localStorage.setItem(StorageKeys.USER, data.jwt);
+      localStorage.setItem(StorageKeys.TOKEN, data.jwt);
 
-      localStorage.setItem(StorageKeys.TOKEN, JSON.stringify(data.user))
+      localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user))
      // save data
      return data.user;
     }
@@ -24,9 +24,9 @@ import StorageKeys from "../../constants/storage-keys";
      // call api to register
       const data = await userApi.login(payload);
 
-      localStorage.setItem(StorageKeys.USER, data.jwt);
+      localStorage.setItem(StorageKeys.TOKEN, data.jwt);
 
-      localStorage.setItem(StorageKeys.TOKEN, JSON.stringify(data.user))
+      localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user))
      // save data
      return data.user;
     }
@@ -34,10 +34,11 @@ import StorageKeys from "../../constants/storage-keys";
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        current: {},
-        settings: {},
+    //  current: JSON.parse(localStorage.getItem(StorageKeys.USER)) || {},
+      current : JSON.parse(localStorage.getItem(StorageKeys.USER)) || {},
+     settings: {},
     },
-    // JSON.parse(localStorage.getItem(StorageKeys.USER)) ||
+    
     reducers:{
         logout(state) {
             localStorage.removeItem(StorageKeys.USER);
@@ -53,8 +54,9 @@ const userSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.current = action.payload;
         },
-    }
+    },
 });
 
-const {reducer} = userSlice;
+const { actions,reducer} = userSlice;
+export const {logout} = actions;
 export default reducer;

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { DataContext } from '../../components/DataProvider';
 import Colors from '../Products/components/DetailProducts/components/Colors';
 import Sizes from '../Products/components/DetailProducts/components/Sizes';
@@ -11,6 +11,17 @@ Cart.propTypes = {
 };
 
 function Cart(props) {
+      
+    const history = useHistory();
+
+    useEffect(() => {
+      const token = localStorage.getItem('access_token');
+      if (!token) {
+        history.push('/product/login');
+      }
+      
+      //eslint-disable-next-line
+    }, []); 
      
     const value = useContext(DataContext)
      const [cart, setCart] = value.cart
